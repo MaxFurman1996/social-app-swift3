@@ -19,6 +19,7 @@
 		BF72E7A51F210A1500461326 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A41F210A1500461326 /* RoundBtn.swift */; };
 		BF72E7A71F21131900461326 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A61F21131900461326 /* FancyTextField.swift */; };
 		BF72E7A91F211F4200461326 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A81F211F4200461326 /* FancyBtn.swift */; };
+		BF72E7AB1F21343900461326 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		BF72E7A41F210A1500461326 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		BF72E7A61F21131900461326 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		BF72E7A81F211F4200461326 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		BF72E7AC1F215B1700461326 /* devslopes-social.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devslopes-social.entitlements"; sourceTree = "<group>"; };
 		CC8845A83EE5FF7398EF72E9 /* Pods-devslopes-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF72E7AB1F21343900461326 /* FBSDKLoginKit.framework in Frameworks */,
 				881F8A0F3249CC1B660394AB /* Pods_devslopes_social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,10 +77,11 @@
 		BF41BFFB1F1FAC7A001109F2 /* devslopes-social */ = {
 			isa = PBXGroup;
 			children = (
-				BF72E7A11F21056200461326 /* Utils */,
+				BF72E7AC1F215B1700461326 /* devslopes-social.entitlements */,
 				BF41C0101F1FB3C6001109F2 /* Model */,
 				BF41C0111F1FB3CB001109F2 /* View */,
 				BF41C0121F1FB3CF001109F2 /* Controller */,
+				BF72E7A11F21056200461326 /* Utils */,
 				BF41BFFC1F1FAC7B001109F2 /* AppDelegate.swift */,
 				BF41C0001F1FAC7B001109F2 /* Main.storyboard */,
 				BF41C0031F1FAC7B001109F2 /* Assets.xcassets */,
@@ -133,6 +138,7 @@
 		FDD1BDAE2934D67968EB8CA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */,
 				B1C9D1D907363594B2F16318 /* Pods_devslopes_social.framework */,
 			);
 			name = Frameworks;
@@ -175,6 +181,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = SU634ZDD66;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -395,8 +406,14 @@
 			baseConfigurationReference = CC8845A83EE5FF7398EF72E9 /* Pods-devslopes-social.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "devslopes-social/devslopes-social.entitlements";
 				DEVELOPMENT_TEAM = SU634ZDD66;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "devslopes-social/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxfurman.devslopes-social";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,8 +426,14 @@
 			baseConfigurationReference = 5667B94565C8455251509987 /* Pods-devslopes-social.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "devslopes-social/devslopes-social.entitlements";
 				DEVELOPMENT_TEAM = SU634ZDD66;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "devslopes-social/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.maxfurman.devslopes-social";
 				PRODUCT_NAME = "$(TARGET_NAME)";

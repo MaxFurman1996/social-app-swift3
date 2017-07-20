@@ -77,6 +77,9 @@
                                     <constraint firstAttribute="height" constant="150" id="QfW-hK-d6h"/>
                                 </constraints>
                                 <state key="normal" image="f"/>
+                                <connections>
+                                    <action selector="facebooLoginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zfv-bH-rKE"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dFo-0z-HSV">
                                 <rect key="frame" x="46" y="424" width="283" height="126"/>

@@ -10,4 +10,7 @@ target 'devslopes-social' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
 end
