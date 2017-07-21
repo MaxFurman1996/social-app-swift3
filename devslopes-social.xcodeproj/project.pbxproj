@@ -19,7 +19,6 @@
 		BF72E7A51F210A1500461326 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A41F210A1500461326 /* RoundBtn.swift */; };
 		BF72E7A71F21131900461326 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A61F21131900461326 /* FancyTextField.swift */; };
 		BF72E7A91F211F4200461326 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A81F211F4200461326 /* FancyBtn.swift */; };
-		BF72E7AB1F21343900461326 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 		BF72E7A41F210A1500461326 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		BF72E7A61F21131900461326 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		BF72E7A81F211F4200461326 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
-		BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BF72E7AC1F215B1700461326 /* devslopes-social.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devslopes-social.entitlements"; sourceTree = "<group>"; };
 		CC8845A83EE5FF7398EF72E9 /* Pods-devslopes-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF72E7AB1F21343900461326 /* FBSDKLoginKit.framework in Frameworks */,
 				881F8A0F3249CC1B660394AB /* Pods_devslopes_social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +135,6 @@
 		FDD1BDAE2934D67968EB8CA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BF72E7AA1F21343900461326 /* FBSDKLoginKit.framework */,
 				B1C9D1D907363594B2F16318 /* Pods_devslopes_social.framework */,
 			);
 			name = Frameworks;

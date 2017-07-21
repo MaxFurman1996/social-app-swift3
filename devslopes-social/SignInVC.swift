@@ -13,11 +13,11 @@ import FacebookCore
 
 class SignInVC: UIViewController {
     
+    @IBOutlet weak var emailField: FancyTextField!
+    @IBOutlet weak var passField: FancyTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-    
         
     }
     
@@ -39,12 +39,37 @@ class SignInVC: UIViewController {
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential){ (user, error) in
             if (error != nil) {
-                print("Unable to sign in with firebase")
+                print("Unable to sign in with Firebase")
             } else {
-                print("Sucessful sign in with firebase")
+                print("Sucessful sign in with Firebase")
             }
         }
     }
+    
+    @IBAction func signInPressed(_ sender: Any) {
+        if let email = emailField.text, let pass = passField.text{
+            Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
+                if error == nil {
+                    print("Unable to authenticate in with Firebase")
+                } else {
+                    Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
+                        if error != nil {
+                            print("Unable to authenticate in with Firebase using email")
+                        } else {
+                            print("Successfully authenticated with Firebase")
+                        }
+                    
+                    })
+                }
+                
+            })
+        }
+    }
+    
+    @IBOutlet weak var imageLogo: UIImageView!
+    @IBOutlet weak var fancyView: FancyView!
+    
+
 
 
 }
