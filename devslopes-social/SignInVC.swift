@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FacebookLogin
 import FacebookCore
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
     
@@ -21,6 +22,14 @@ class SignInVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
+    
     @IBAction func facebooLoginBtnPressed(_ sender: Any) {
         let loginManager = LoginManager()
         loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
@@ -28,7 +37,7 @@ class SignInVC: UIViewController {
             case .failed(let error):
                 print(error)
             case .cancelled:
-                print("User cancelled login.")
+                print("MAX: User cancelled login.")
             case .success(_, _, let accessToken):
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 self.firebaseAuth(credential)
@@ -39,9 +48,12 @@ class SignInVC: UIViewController {
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential){ (user, error) in
             if (error != nil) {
-                print("Unable to sign in with Firebase")
+                print("MAX: Unable to sign in with Firebase")
             } else {
-                print("Sucessful sign in with Firebase")
+                print("MAX: Sucessful sign in with Firebase")
+                if let user = user {
+                    self.completeSignIn(userId: user.uid)
+                }
             }
         }
     }
@@ -50,13 +62,19 @@ class SignInVC: UIViewController {
         if let email = emailField.text, let pass = passField.text{
             Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
                 if error == nil {
-                    print("Unable to authenticate in with Firebase")
+                    print("MAX: Unable to authenticate in with Firebase")
+                    if let user = user {
+                        self.completeSignIn(userId: user.uid)
+                    }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
                         if error != nil {
-                            print("Unable to authenticate in with Firebase using email")
+                            print("MAX: Unable to authenticate in with Firebase using email")
                         } else {
-                            print("Successfully authenticated with Firebase")
+                            print("MAX: Successfully authenticated with Firebase")
+                            if let user = user {
+                                self.completeSignIn(userId: user.uid)
+                            }
                         }
                     
                     })
@@ -66,10 +84,12 @@ class SignInVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var imageLogo: UIImageView!
-    @IBOutlet weak var fancyView: FancyView!
-    
-
+    //Save user id to keychain
+    func completeSignIn(userId id: String){
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("MAX: Data save to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
 
 
 }
