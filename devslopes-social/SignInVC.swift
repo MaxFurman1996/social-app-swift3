@@ -52,11 +52,13 @@ class SignInVC: UIViewController {
             } else {
                 print("MAX: Sucessful sign in with Firebase")
                 if let user = user {
-                    self.completeSignIn(userId: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(userId: user.uid, userData: userData)
                 }
             }
         }
     }
+    
     
     @IBAction func signInPressed(_ sender: Any) {
         if let email = emailField.text, let pass = passField.text{
@@ -64,7 +66,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("MAX: Unable to authenticate in with Firebase")
                     if let user = user {
-                        self.completeSignIn(userId: user.uid)
+                        let userData = ["provider": user.uid]
+                        self.completeSignIn(userId: user.uid, userData: userData)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
@@ -73,7 +76,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("MAX: Successfully authenticated with Firebase")
                             if let user = user {
-                                self.completeSignIn(userId: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(userId: user.uid, userData: userData)
                             }
                         }
                     
@@ -85,8 +89,9 @@ class SignInVC: UIViewController {
     }
     
     //Save user id to keychain
-    func completeSignIn(userId id: String){
-        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+    func completeSignIn(userId: String, userData: Dictionary<String,String>){
+        DataService.ds.createFirebaseDBUser(uid: userId, userData: userData)
+        let keychainResult = KeychainWrapper.standard.set(userId, forKey: KEY_UID)
         print("MAX: Data save to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }
