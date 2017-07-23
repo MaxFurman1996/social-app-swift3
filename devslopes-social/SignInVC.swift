@@ -20,10 +20,6 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
-            print(snapshot.value)
-        })
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
