@@ -62,23 +62,23 @@
                                     <action selector="facebooLoginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zfv-bH-rKE"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dFo-0z-HSV">
-                                <rect key="frame" x="46" y="424" width="283" height="126"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dFo-0z-HSV">
+                                <rect key="frame" x="46" y="424" width="283" height="128"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLw-nm-XkV" customClass="FancyTextField" customModule="devslopes_social" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="32.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWV-v9-FUI" customClass="FancyTextField" customModule="devslopes_social" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45" width="283" height="30"/>
+                                        <rect key="frame" x="0.0" y="47.5" width="283" height="33"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-ok-B57" customClass="FancyBtn" customModule="devslopes_social" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90" width="283" height="36"/>
+                                        <rect key="frame" x="0.0" y="95.5" width="283" height="32.5"/>
                                         <color key="backgroundColor" red="0.78731441497802734" green="0.35494503378868103" blue="0.20393337309360504" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <state key="normal" title="Sign In">
@@ -112,7 +112,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jZw-hn-rDI" firstAttribute="top" secondItem="dFo-0z-HSV" secondAttribute="bottom" constant="42" id="4mN-2l-6yd"/>
+                            <constraint firstItem="jZw-hn-rDI" firstAttribute="top" secondItem="dFo-0z-HSV" secondAttribute="bottom" constant="40" id="4mN-2l-6yd"/>
                             <constraint firstAttribute="trailing" secondItem="jZw-hn-rDI" secondAttribute="trailing" id="5lS-Aw-bMA"/>
                             <constraint firstAttribute="trailing" secondItem="bHq-0V-me6" secondAttribute="trailing" id="AZk-CN-EMc"/>
                             <constraint firstItem="dFo-0z-HSV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="BIx-I8-MO5"/>
@@ -131,7 +131,9 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="JLw-nm-XkV" id="Lmx-tx-YRz"/>
+                        <outlet property="facebookAndSignDistance" destination="PCN-fU-xUF" id="7oN-kf-FI5"/>
                         <outlet property="passField" destination="CWV-v9-FUI" id="75g-55-pjp"/>
+                        <outlet property="topView" destination="bHq-0V-me6" id="sL5-qP-i55"/>
                         <segue destination="z8u-WC-XVy" kind="show" identifier="goToFeed" id="XBZ-ra-AvY"/>
                     </connections>
                 </viewController>
@@ -167,6 +169,9 @@
                                             <constraint firstAttribute="height" constant="32" id="zRV-b3-osK"/>
                                         </constraints>
                                         <state key="normal" image="sign-out"/>
+                                        <connections>
+                                            <action selector="signOutBtnPressed:" destination="z8u-WC-XVy" eventType="touchUpInside" id="DPl-9M-lhR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.73792860240000002" blue="0.8327636719" alpha="1" colorSpace="calibratedRGB"/>
@@ -184,13 +189,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-cy-1x1">
                                         <rect key="frame" x="8" y="8" width="327" height="49"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="RxU-ih-ISl" customClass="CircleView" customModule="devslopes_social" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="RxU-ih-ISl" customClass="CircleView" customModule="devslopes_social" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
                                                 <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="c5i-vP-fbo"/>
                                                     <constraint firstAttribute="width" constant="49" id="m8K-rS-3pR"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="7sj-gg-LsE" appends="YES" id="PTL-tj-Vxx"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0cF-vJ-HU8">
                                                 <rect key="frame" x="59" y="0.0" width="209" height="49"/>
@@ -199,7 +208,7 @@
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jV3-AK-es6" customClass="FancyBtn" customModule="devslopes_social" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jV3-AK-es6" customClass="RoundBtn" customModule="devslopes_social" customModuleProvider="target">
                                                 <rect key="frame" x="278" y="0.0" width="49" height="49"/>
                                                 <color key="backgroundColor" red="0.78731441499999999" green="0.35494503379999998" blue="0.20393337310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
@@ -232,13 +241,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ib6-KU-piG" customClass="FancyView" customModule="devslopes_social" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8" width="343" height="299"/>
+                                                    <rect key="frame" x="16" y="8" width="382" height="299"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0IF-U0-PdA">
-                                                            <rect key="frame" x="5" y="5" width="333" height="258.5"/>
+                                                            <rect key="frame" x="5" y="5" width="372" height="258.5"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmH-0h-FAn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="60"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="UWz-Nn-gNP" customClass="CircleView" customModule="devslopes_social" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -248,13 +257,13 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MonkeyInJelly85" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48u-c1-7qj">
-                                                                            <rect key="frame" x="60" y="0.0" width="213" height="60"/>
+                                                                            <rect key="frame" x="60" y="0.0" width="252" height="60"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                                             <color key="textColor" red="0.78731441499999999" green="0.35494503379999998" blue="0.20393337310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="7gx-C7-MJh">
-                                                                            <rect key="frame" x="273" y="0.0" width="60" height="60"/>
+                                                                            <rect key="frame" x="312" y="0.0" width="60" height="60"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="60" id="5Cd-wj-bkU"/>
                                                                                 <constraint firstAttribute="width" constant="60" id="dlg-fz-7u5"/>
@@ -263,10 +272,10 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="UDp-Pb-6YH">
-                                                                    <rect key="frame" x="0.0" y="67" width="333" height="134.5"/>
+                                                                    <rect key="frame" x="0.0" y="67" width="372" height="134.5"/>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7px-4h-mq3">
-                                                                    <rect key="frame" x="0.0" y="208.5" width="333" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="208.5" width="372" height="50"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="dLR-2i-oxh"/>
@@ -278,7 +287,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-Tj-Y1g">
-                                                            <rect key="frame" x="266" y="273.5" width="72" height="20.5"/>
+                                                            <rect key="frame" x="305" y="273.5" width="72" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKd-Bh-ELE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -343,11 +352,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImage" destination="RxU-ih-ISl" id="eWw-bG-oAi"/>
                         <outlet property="tableView" destination="x80-dg-GdN" id="Bid-X2-v0r"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="yu1-Lq-8Fz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rw-nO-MhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7sj-gg-LsE">
+                    <connections>
+                        <action selector="addImagePressed:" destination="z8u-WC-XVy" id="fXv-u4-kmn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="965.60000000000002" y="138.98050974512745"/>
         </scene>

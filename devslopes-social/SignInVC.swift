@@ -20,6 +20,12 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboard()
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +102,22 @@ class SignInVC: UIViewController {
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }
 
-
+    @IBOutlet weak var facebookAndSignDistance: NSLayoutConstraint!
+    @IBOutlet weak var topView: FancyView!
+    
+    func keyboardWillShow(notification: NSNotification) {
+        print("MAX: keyboardWillShow")
+        if self.view.frame.origin.y == 0{
+            self.view.frame.origin.y -= topView.frame.height
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        print("MAX: keyboardWillHide")
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += topView.frame.height
+        }
+    }
+    
 }
 

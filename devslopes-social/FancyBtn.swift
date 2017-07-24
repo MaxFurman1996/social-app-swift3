@@ -23,10 +23,5 @@ class FancyBtn: UIButton {
         layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = frame.width / 2
-    }
 
 }

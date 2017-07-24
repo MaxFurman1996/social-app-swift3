@@ -10,17 +10,26 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addImage: UIImageView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboard()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
         
         DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
@@ -51,8 +60,21 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return PostCell()
         }
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerEditedImage] as? UIImage{
+            addImage.image = img
+        } else {
+            print("MAX: A valid image wasn't selected")
+        }
+        dismiss(animated: true, completion: nil)
+    }
 
 
+    @IBAction func addImagePressed(_ sender: UITapGestureRecognizer) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func signOutBtnPressed(_ sender: Any) {
         let keychainRemoveResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("MAX: Id removed from keychain \(keychainRemoveResult)")

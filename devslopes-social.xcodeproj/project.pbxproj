@@ -24,6 +24,7 @@
 		BF72E7A91F211F4200461326 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72E7A81F211F4200461326 /* FancyBtn.swift */; };
 		BF981DBB1F24B8850093D94C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF981DBA1F24B8850093D94C /* DataService.swift */; };
 		BF981DBE1F24F6540093D94C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF981DBD1F24F6540093D94C /* Post.swift */; };
+		BFC66A731F260CB90025719A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC66A721F260CB90025719A /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BF72E7AC1F215B1700461326 /* devslopes-social.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devslopes-social.entitlements"; sourceTree = "<group>"; };
 		BF981DBA1F24B8850093D94C /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		BF981DBD1F24F6540093D94C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BFC66A721F260CB90025719A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		CC8845A83EE5FF7398EF72E9 /* Pods-devslopes-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 		BF41BFFB1F1FAC7A001109F2 /* devslopes-social */ = {
 			isa = PBXGroup;
 			children = (
+				BFC66A711F260A060025719A /* Extensions */,
 				BF72E7AC1F215B1700461326 /* devslopes-social.entitlements */,
 				BF981DBC1F24B88B0093D94C /* Services */,
 				BF41C0101F1FB3C6001109F2 /* Model */,
@@ -144,6 +147,14 @@
 				BF981DBA1F24B8850093D94C /* DataService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		BFC66A711F260A060025719A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFC66A721F260CB90025719A /* UIViewController+Ext.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C7B4FDA8D58FAF6105CE0A86 /* Pods */ = {
@@ -294,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4EF1FE1F238252000EE47B /* CircleView.swift in Sources */,
+				BFC66A731F260CB90025719A /* UIViewController+Ext.swift in Sources */,
 				BF41BFFF1F1FAC7B001109F2 /* SignInVC.swift in Sources */,
 				BF72E7A51F210A1500461326 /* RoundBtn.swift in Sources */,
 				BF981DBE1F24F6540093D94C /* Post.swift in Sources */,
