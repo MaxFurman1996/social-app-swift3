@@ -22,6 +22,7 @@ class SignInVC: UIViewController {
         
         self.hideKeyboard()
         
+        //Function that move view when keyboard will show or hide
         NotificationCenter.default
             .addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default
@@ -36,6 +37,7 @@ class SignInVC: UIViewController {
         }
     }
     
+    //Facebook auth
     @IBAction func facebooLoginBtnPressed(_ sender: Any) {
         let loginManager = LoginManager()
         loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
@@ -51,6 +53,7 @@ class SignInVC: UIViewController {
         }
     }
     
+    
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential){ (user, error) in
             if (error != nil) {
@@ -65,7 +68,7 @@ class SignInVC: UIViewController {
         }
     }
     
-    
+    //Sign in with email and password
     @IBAction func signInPressed(_ sender: Any) {
         if let email = emailField.text, let pass = passField.text{
             Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
@@ -102,6 +105,7 @@ class SignInVC: UIViewController {
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }
 
+    //move view when keyboard will show or hide
     @IBOutlet weak var facebookAndSignDistance: NSLayoutConstraint!
     @IBOutlet weak var topView: FancyView!
     

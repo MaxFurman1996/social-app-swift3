@@ -8,9 +8,8 @@
 
 import UIKit
 
-
+//Hide keyboard when you tap outside of keyboard
 extension UIViewController {
-    //Hide keyboard when you tap outside of keyboard
     func hideKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,

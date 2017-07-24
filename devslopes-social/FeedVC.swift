@@ -17,6 +17,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.delegate = self
         
         
+        //Get posts from Firebase
         DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshot {
@@ -54,7 +56,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
-            cell.configure(post: post)
+            
+            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString){
+                cell.configure(post: post, img: img)
+            } else {
+                cell.configure(post: post)
+            }
             return cell
         } else {
             return PostCell()
