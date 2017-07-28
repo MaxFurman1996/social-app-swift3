@@ -61,7 +61,10 @@ class SignInVC: UIViewController {
             } else {
                 print("MAX: Sucessful sign in with Firebase")
                 if let user = user {
-                    let userData = ["provider": credential.provider]
+                    let userData = [
+                        "userName": user.displayName ?? "NoName",
+                        "provider": credential.provider
+                    ]
                     self.completeSignIn(userId: user.uid, userData: userData)
                 }
             }
@@ -75,7 +78,11 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("MAX: Unable to authenticate in with Firebase")
                     if let user = user {
-                        let userData = ["provider": user.uid]
+                        let userName = email.components(separatedBy: "@")[0]
+                        let userData = [
+                            "userName": userName,
+                            "provider": user.uid
+                        ]
                         self.completeSignIn(userId: user.uid, userData: userData)
                     }
                 } else {
@@ -85,7 +92,11 @@ class SignInVC: UIViewController {
                         } else {
                             print("MAX: Successfully authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider": user.providerID]
+                                let userName = email.components(separatedBy: "@")[0]
+                                let userData = [
+                                    "userName": userName,
+                                    "provider": user.providerID
+                                ]
                                 self.completeSignIn(userId: user.uid, userData: userData)
                             }
                         }
