@@ -117,7 +117,6 @@ class SignInVC: UIViewController {
     }
 
     //move view when keyboard will show or hide
-    @IBOutlet weak var facebookAndSignDistance: NSLayoutConstraint!
     @IBOutlet weak var topView: FancyView!
     
     func keyboardWillShow(notification: NSNotification) {
